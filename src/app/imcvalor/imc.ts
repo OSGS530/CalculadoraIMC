@@ -3,6 +3,7 @@ const normal=2
 const sobrepeso=3
 const obesidad=4
 
+
 var mujer:number[][] = [
   [13.5,16.6,19.0,22.6],
   [13.9,17.2,19.9,23.7],
