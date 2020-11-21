@@ -122,6 +122,7 @@ describe('imcmujer test', ()=> {
         expect(result).toBe(23.39);
     })
 
+
     it(' 17 años, 1.84m, 87kg = 25.70 IMC', ()=>{
         let result = 0;
 
