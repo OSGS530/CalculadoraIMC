@@ -2,7 +2,7 @@ const bajoPeso = 1
 const normal=2
 const sobrepeso=3
 const obesidad=4
-
+const error=-1
 
 var mujer:number[][] = [
   [13.5,16.6,19.0,22.6],
@@ -33,7 +33,7 @@ var hombre:number[][] = [
 
 export function getMaleStatus(edad:number,imc:number){
   if (edad<10||edad>19){
-    return;
+    return error;
   }
   if (imc>=hombre[edad-10][3]){
     return obesidad;
@@ -48,7 +48,7 @@ export function getMaleStatus(edad:number,imc:number){
 
 export function getFemaleStatus(edad:number,imc:number){
   if (edad<10||edad>19){
-    return;
+    return error;
   }
   if (imc>=mujer[edad-10][3]){
     return obesidad;
