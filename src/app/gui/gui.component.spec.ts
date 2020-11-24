@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { DomSanitizer } from '@angular/platform-browser';
 
 import { GuiComponent } from './gui.component';
 
@@ -92,53 +93,73 @@ describe('GuiComponent', () => {
     component.edad=30
     component.imc=30.0
     component.calcMale()
+    expect(component.rango).toBe("")
   })
   it('Should call calcFemale mathod', () => {
     component.edad=30
     component.imc=30.0
     component.calcFemale()
+    expect(component.rango).toBe("")
   })
 
   it('Should call calcMale mathod', () => {
     component.edad=19
+    component.estatura=1.50
+    component.peso=80
     component.imc=30.0
     component.calcMale()
-    component.rango="Obesidad"
-  })
-
-  it('Should call calcMale mathod', () => {
-    component.edad=30
-    component.imc=30.0
-    component.calcMale()
-    component.rango=""
-  })
-
-  it('Should call calcFemale mathod', () => {
-    component.edad=30
-    component.imc=30.0
-    component.calcFemale()
-    component.rango=""
-  })
-
-  it('Should call calcFemale mathod', () => {
-    component.edad=19
-    component.imc=30.0
-    component.calcFemale()
-    component.rango="Obesidad"
+    expect(component.rango).toBe("Obesidad")
   })
 
   it('Should call calcMale mathod', () => {
     component.edad=19
-    component.imc=30.0
-    component.calcMale()
-    component.rango="Obesidad"
-  })
-
-  it('Should call calcMale mathod', () => {
-    component.edad=19
+    component.estatura=1.50
+    component.peso=80
     component.imc=29.0
     component.calcMale()
-    component.rango="Sobrepeso"
+    expect(component.rango).toBe("Obesidad")
   })
-
+  it('Should call calcMale mathod', () => {
+    component.edad=19
+    component.estatura=1.50
+    component.peso=60
+    component.imc=29.0
+    component.calcMale()
+    expect(component.rango).toBe("Sobrepeso")
+  })
+  it('Should call calcFemale mathod', () => {
+    component.edad=19
+    component.estatura=1.50
+    component.peso=60
+    component.imc=29.0
+    component.calcFemale()
+    expect(component.rango).toBe("Sobrepeso")
+  })
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
