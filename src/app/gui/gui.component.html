@@ -1,0 +1,46 @@
+<html style="background-image: url('../../assets/images/fondo.jpg');">
+    <div>
+        <br>
+        <h1 class="text-center">CALCULADORA DEL INDICE DE MASA CORPORAL</h1>
+        <div class="centrarMas">
+            <mat-form-field appearance="fill">
+            <mat-label>Edad</mat-label>
+                <mat-select [(value)]="edad" type="number"> 
+                    <mat-option *ngFor="let item of ages;" value={{item+10}}>
+                            {{item+10}}
+                    </mat-option>
+                </mat-select>    
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+            <mat-label>Genero</mat-label>
+                <mat-select [(value)]="genero">
+                    <mat-option value="Mujer">Mujer</mat-option>
+                    <mat-option value="Hombre">Hombre</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <br>
+            <h1>Peso en kilogramos:</h1>
+            <div class="centrar">
+                <input matInput [(ngModel)]="peso" type="number" class="form-control peso" placeholder="Peso en Kg">
+            </div>
+            <h1>Estatura en metros:</h1>
+            <div class="centrar">
+                <input matInput type="number" [(ngModel)]="estatura" class="form-control peso" placeholder="Estatura en cm">
+            </div>
+            <div>
+                <input class="bn" type="button" (click)="onGetPressed()" value="Calcular"/>
+            </div>
+            <br>
+        </div>
+        <br>
+        <h1 class="text-center">RESULTADOS:</h1>
+        <div class="centrarMas">
+            <li class="form-control peso">Estatura: {{estatura}}</li>
+            <li class="form-control peso">Peso: {{peso}}</li>
+            <li  class="form-control peso" >Edad: {{edad}}</li>
+            <li type="text" class="form-control peso" >Genero: {{genero}}</li>
+            <li  class="form-control peso" >IMC: {{imc}}</li>
+            <li type="text" class="form-control peso" >Estatus:{{rango}} </li>
+        </div>
+    </div>
+</html>
