@@ -3,7 +3,8 @@ export class  StorageService {
     constructor(){}
   
     getApiUrl(){
-      return   'http://localhost:8080'
+      return 'https://garciaso-imc-api.herokuapp.com'
+      //return   'http://localhost:8080'
       //return   'http://201.147.64.84:8083' 
       
     }

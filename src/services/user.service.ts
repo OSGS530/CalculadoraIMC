@@ -12,7 +12,8 @@ import { retry, catchError } from 'rxjs/operators';
 
 export class UsersService {
 
-  apiURL = 'http://localhost:8080';
+  apiURL = 'https://garciaso-imc-api.herokuapp.com'
+  //apiURL = 'http://localhost:8080';
  
  
    constructor(private http: HttpClient) { }
