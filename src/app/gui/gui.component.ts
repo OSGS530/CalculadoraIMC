@@ -16,7 +16,7 @@ export class GuiComponent implements OnInit {
   ages = Array.from(Array(10).keys());
 
   status=["Bajo peso","Normal","Sobrepeso","Obesidad"];
-  constructor(private imcService : ImcService) {}
+  constructor(private imcService : ImcService, private storageService : StorageService) {}
   
   rango:String= "";
   imc = 0;
@@ -28,8 +28,8 @@ export class GuiComponent implements OnInit {
 
   ngOnInit(): void {
      // test, debe ir en boton logout
-    //this.storageService.localDeleteByKey("token");
-    //alert("deleted token" + this.storageService.getLocal("token"));
+    this.storageService.localDeleteByKey("token");
+    alert("deleted token" + this.storageService.getLocal("token"));
   }
 
   calcMale(){
