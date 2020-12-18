@@ -5,19 +5,28 @@ import { AppComponent } from './app.component';
 import { GuiComponent } from './gui/gui.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from './login/login.component';
+import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { StorageService } from "../services/storage.service";
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GuiComponent
+    GuiComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
+    HttpClientModule, 
     BrowserModule,
     BrowserAnimationsModule,
     MatSelectModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [StorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
