@@ -1,8 +1,5 @@
+
 <html style="background-image: url('../../assets/images/fondo.jpg');">
-    <ul>
-        <li><a routerLink="login">Login</a></li>
-        <li><a routerLink="login">Singup</a></li>
-    </ul>
     <div>
         <br>
         <h1 class="text-center">CALCULADORA DEL INDICE DE MASA CORPORAL</h1>
@@ -33,6 +30,8 @@
             </div>
             <div>
                 <input class="bn" type="button" (click)="onGetPressed()" value="Calcular"/>
+                <input class="bn" type="button" (click)="saveimc()" value="Guardar IMC"/>
+                <input class="bn" type="button" (click)="onViewHistorical()" value="View historial"/>
             </div>
             <br>
         </div>
