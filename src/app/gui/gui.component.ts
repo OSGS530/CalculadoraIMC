@@ -3,6 +3,9 @@ import {imchombre} from'../imchombre/imchombre';
 import {imcmujer} from '../imcmujer/imcmujer';
 import {getMaleStatus} from '../imcvalor/imc';
 import {getFemaleStatus} from '../imcvalor/imc';
+import { ImcApi } from "../../models/imcapi";
+import { ImcService } from "../../services/imc.service"
+import { StorageService } from "../../services/storage.service";
 
 @Component({
   selector: 'app-gui',
@@ -13,7 +16,7 @@ export class GuiComponent implements OnInit {
   ages = Array.from(Array(10).keys());
 
   status=["Bajo peso","Normal","Sobrepeso","Obesidad"];
-  constructor() {}
+  constructor(private imcService : ImcService, private storageService : StorageService) {}
   
   rango:String= "";
   imc = 0;
@@ -23,11 +26,14 @@ export class GuiComponent implements OnInit {
   genero:String;
 
 
-  ngOnInit() {
+  ngOnInit(): void {
+     // test, debe ir en boton logout
+    this.storageService.localDeleteByKey("token");
+    alert("deleted token" + this.storageService.getLocal("token"));
   }
 
   calcMale(){
-    this.imc  = imcmujer(this.estatura,this.peso);
+    this.imc  = imchombre(this.estatura,this.peso);
     let myResult = getMaleStatus(this.edad,this.imc); 
     if (myResult > 0){
       this.rango = this.status[Math.floor(myResult)-1];
@@ -54,4 +60,30 @@ export class GuiComponent implements OnInit {
     }
     else{console.log(this.genero);}
   }
+
+  saveimc() {
+    var imc = new ImcApi;
+    //cambiar usuario activo
+    imc.iduser = 1;
+    imc.imc = this.imc;
+
+  	return this.imcService.createImc(imc)
+		 .subscribe((data: any) => {
+			alert(JSON.stringify(data));
+			
+    })
+  }
+
+  getImc(){
+  	return this.imcService.getImc()
+		 .subscribe((data: any) => {
+			alert(JSON.stringify(data));
+    })
+  }
+
+  onViewHistorical(){
+    //Whatever
+    console.log(this.getImc())
+  }
+
 }
