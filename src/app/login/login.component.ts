@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
       this.storageService.setLocal("token", data.accessToken);		
       //this.storageService.setSession("token", data.accessToken);  
       this.result = data.accessToken;
-      alert(data.accessToken);
+      //alert(data.accessToken);
 			// this.router.navigate(['/']);
 		
 		})

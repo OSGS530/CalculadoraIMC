@@ -74,4 +74,16 @@ export class GuiComponent implements OnInit {
     })
   }
 
+  getImc(){
+  	return this.imcService.getImc()
+		 .subscribe((data: any) => {
+			alert(JSON.stringify(data));
+    })
+  }
+
+  onViewHistorical(){
+    //Whatever
+    console.log(this.getImc())
+  }
+
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ImcApi } from '../models/imcapi';
+import {UserApi} from '../models/usersapi';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { StorageService } from "../services/storage.service";
@@ -42,6 +43,13 @@ export class ImcService {
     )
   }
 
+  getImc(){
+    return this.http.get<UserApi>(this.apiURL+"/imcs",this.httpOptions)
+    .pipe(
+      retry(1),
+      catchError(this.MessageError)
+    )
+  }
   // Error handling 
   handleError(error) {
      let errorMessage = '';
