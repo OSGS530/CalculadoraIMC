@@ -12,7 +12,7 @@ import { StorageService } from "../services/storage.service";
 
 export class ImcService {
 
- apiURL = 'https://garciaso-imc-api.herokuapp.com';
+ apiURL = 'https://stormy-chamber-66037.herokuapp.com/';
 
 
   constructor(private http: HttpClient,

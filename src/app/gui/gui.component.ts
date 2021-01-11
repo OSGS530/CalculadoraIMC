@@ -29,7 +29,6 @@ export class GuiComponent implements OnInit {
   ngOnInit(): void {
      // test, debe ir en boton logout
     this.storageService.localDeleteByKey("token");
-    alert("deleted token" + this.storageService.getLocal("token"));
   }
 
   calcMale(){
@@ -85,5 +84,6 @@ export class GuiComponent implements OnInit {
     //Whatever
     console.log(this.getImc())
   }
+
 
 }

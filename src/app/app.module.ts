@@ -10,13 +10,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { StorageService } from "../services/storage.service";
 import { SignupComponent } from './signup/signup.component';
+import { NavbarInicialComponent } from './navbar-inicial/navbar-inicial.component';
+import { GraphicsComponent } from './graphics/graphics.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GuiComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    NavbarInicialComponent,
+    GraphicsComponent
   ],
   imports: [
     HttpClientModule, 

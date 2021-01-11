@@ -1,29 +1,32 @@
-<div class="calculator">
-
+<html style="background-image: url('../../assets/images/fondo.jpg');">
+<br>
+<div class="centrarMas">
     <form>
-        <div class="input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> 
-            <input id="name" [(ngModel)]="name" type="text" class="form-control operator1" name="operator1" placeholder="name">
+        <div>
+            <h1>Nombre:</h1>
+            <input class="centrar" id="name" [(ngModel)]="name" type="text" class="form-control operator1" name="operator1">
         </div>
 
-        <div class="input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-            <input id="username" [(ngModel)]="username" type="username" class="form-control operator2" name="operator2" placeholder="username">
+        <div>
+            <h1>Nombre de usuario: </h1>
+            <input id="username" [(ngModel)]="username" type="username" class="form-control operator2" name="operator2">
         </div>
 
-        <div class="input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-            <input id="correo" [(ngModel)]="correo" type="correo" class="form-control operator1" name="operator3" placeholder="email">
+        <div>
+            <h1>Correo electronico: </h1>
+            <input id="correo" [(ngModel)]="correo" type="correo" class="form-control operator1" name="operator3">
         </div>
 
-        <div class="input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-            <input id="password" [(ngModel)]="password" type="password" class="form-control operator1" name="operator4" placeholder="password">
+        <div>
+            <h1>Contraseña: </h1>
+            <input id="password" [(ngModel)]="password" type="password" class="form-control operator1" name="operator4">
         </div>
 
         
     </form>
+    <br>
 
-    <i class="glyphicon glyphicon-log-in addition-button"
-        (click)="onSignUp()">signup</i>
+    <i class="bn"
+        (click)="onSignUp()">Registrarse</i>
 </div>
+</html>
