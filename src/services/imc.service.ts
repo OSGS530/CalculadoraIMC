@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ImcApi } from '../models/imcapi';
+import { ImcApi,ImcHistoric } from '../models/imcapi';
 import {UserApi} from '../models/usersapi';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
@@ -12,7 +12,7 @@ import { StorageService } from "../services/storage.service";
 
 export class ImcService {
 
- apiURL = 'https://stormy-chamber-66037.herokuapp.com/';
+ apiURL = 'https://garciaso-imc-api.herokuapp.com/';
 
 
   constructor(private http: HttpClient,
@@ -43,8 +43,22 @@ export class ImcService {
     )
   }
 
+  getImcs(){
+    return this.http.get<ImcHistoric>(this.apiURL+"/imcs",this.httpOptions)
+    .pipe(
+      retry(1),
+      catchError(this.MessageError)
+    )
+  }
   getImc(){
-    return this.http.get<UserApi>(this.apiURL+"/imcs",this.httpOptions)
+    return this.http.get<ImcApi>(this.apiURL+"/imcs",this.httpOptions)
+    .pipe(
+      retry(1),
+      catchError(this.MessageError)
+    )
+  }
+  getImcById(id){
+    return this.http.get<ImcApi>(this.apiURL+"/imcs/"+id,this.httpOptions)
     .pipe(
       retry(1),
       catchError(this.MessageError)

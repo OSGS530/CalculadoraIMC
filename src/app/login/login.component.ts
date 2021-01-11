@@ -3,8 +3,7 @@ import { UsersService } from "../../services/user.service"
 //import { User } from "../../models/user";
 import { UserApi } from "../../models/usersapi";
 import { StorageService } from "../../services/storage.service";
-
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +18,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private usersService: UsersService,
-		private storageService: StorageService
+    private storageService: StorageService,
+    private router:Router
   ) 
   { }
 
@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
       this.result = data.accessToken;
       //alert(data.accessToken);
 			// this.router.navigate(['/']);
-		
+      this.router.navigate(['/']);
 		})
 		 
 	

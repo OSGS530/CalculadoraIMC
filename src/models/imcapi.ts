@@ -5,8 +5,8 @@ export class ImcApi {
     glucosa:number;
     id:number;
     imc:number;
-    user:number;
+    iduser:number;
 }
 export class ImcHistoric{
-    content:[]
+    content:ImcApi[]
 }

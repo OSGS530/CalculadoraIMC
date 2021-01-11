@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ImcApi } from "../../models/imcapi";
+import { ImcService } from "../../services/imc.service";
 import * as Chart from 'chart.js';
 
 @Component({
@@ -8,14 +10,21 @@ import * as Chart from 'chart.js';
 })
 export class GraphicsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private imcService:ImcService) { }
 
-  data=[10, 20, 30, 40, 50, 40];
+  data=new Array();
   labels= ['January', 'February', 'March', 'April', 'May', 'June'];
 
   canvas: any;
   ctx: any;
   ngOnInit(): void {
+    var imcs:any;
+    for (imcs in this.imcService.getImcs()){
+      this.data.push(imcs.imc);
+    }
+    for (imcs in this.imcService.getImcs()){
+      this.data.push(imcs.date);
+    }
     this.canvas = document.getElementById('myChart');
     this.ctx = this.canvas.getContext('2d');
     const myChart = new Chart(this.ctx, {
