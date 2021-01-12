@@ -8,15 +8,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import {DatePipe} from '@angular/common';
 import { StorageService } from "../services/storage.service";
 import { SignupComponent } from './signup/signup.component';
+import { NavbarInicialComponent } from './navbar-inicial/navbar-inicial.component';
+import { GraphicsComponent } from './graphics/graphics.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GuiComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    NavbarInicialComponent,
+    GraphicsComponent
   ],
   imports: [
     HttpClientModule, 
@@ -26,7 +31,7 @@ import { SignupComponent } from './signup/signup.component';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [StorageService],
+  providers: [StorageService,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

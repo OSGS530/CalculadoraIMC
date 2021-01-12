@@ -18,7 +18,9 @@ export class SignupComponent implements OnInit {
   correo = ''
   role = ['user']
   constructor(
-    private usersService: UsersService
+    private usersService: UsersService,
+    private storageService:StorageService,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -44,14 +46,15 @@ export class SignupComponent implements OnInit {
     mydata.name=this.name;
 		return this.usersService.registerUser(mydata)
 		 .subscribe((data: any) => {
-			
-      //this.storageService.setSession("token", data.accessToken);  
-      //this.result = data.accessToken;
-      alert('ok')
+      this.storageService.setSession("token", data.accessToken);  
+      //alert('ok')
       //alert(data.accessToken);
-			// this.router.navigate(['/']);
-    
-      
+      if(data.accessToken){
+        this.router.navigate(['/login']);
+        console.log(data.accessToken);
+      }else{
+        this.router.navigate(['/signup']);
+      }
 		})
   }}
 }
