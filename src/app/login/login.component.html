@@ -1,17 +1,21 @@
-<div class="calculator">
-
+<html style="background-image: url('../../assets/images/fondo.jpg');">
+<br>
+<br>
+<div class="centrarMas">
     <form>
-        <div class="input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> 
-            <input id="username" [(ngModel)]="username" type="text" class="form-control operator1" name="operator1" placeholder="username">
+        <div>
+            <h1>Nombre de usuario:</h1>
+            <input class="centrar" id="username" [(ngModel)]="username" type="text" class="form-control operator1" name="operator1">
         </div>
-
-        <div class="input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-            <input id="password" [(ngModel)]="password" type="password" class="form-control operator2" name="operator2" placeholder="password">
+        <br>
+        <div>
+            <h1>Contraseña:</h1>
+            <input class ="centrar" id="password" [(ngModel)]="password" type="password" class="form-control operator2" name="operator2">
         </div>
     </form>
+    <br>
 
-    <i class="glyphicon glyphicon-log-in addition-button"
-        (click)="addition()">login</i>
+    <i class="bn"
+        (click)="addition()">Iniciar sesion</i>
 </div>
+</html>
