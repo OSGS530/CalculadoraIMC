@@ -12,7 +12,7 @@ import { StorageService } from "../services/storage.service";
 
 export class ImcService {
 
- apiURL = 'https://garciaso-imc-api.herokuapp.com/';
+ apiURL = 'https://pacific-reaches-70792.herokuapp.com';
 
 
   constructor(private http: HttpClient,
@@ -26,17 +26,17 @@ export class ImcService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + this.storageService.getLocal("token")
-      //'Authorization': 'Bearer ' + this.storageService.getSession("token")
-
+      'Access-Control-Allow-Origin':'*',
+      //'Authorization': 'Bearer ' + this.storageService.getLocal("token")
+      'Authorization':'Bearer '+this.storageService.getSession("token")
     })
   }  
   // HttpClient API post() method => Create employee
-  createImc(imcApi): Observable<ImcApi> {
+  createImc(imcApi): Observable<ImcApi> {  
     console.log(JSON.stringify(imcApi));
-    console.log(JSON.stringify(this.httpOptions));
-
-    return this.http.post<ImcApi>(this.apiURL + '/imcs', JSON.stringify(imcApi), this.httpOptions)
+    console.log(this.httpOptions);
+    console.log(this.storageService.getSession("token"));
+    return this.http.post<ImcApi>(this.apiURL + '/api/imcs/', JSON.stringify(imcApi), this.httpOptions)
     .pipe(
       retry(1),
       catchError(this.MessageError)
@@ -44,21 +44,21 @@ export class ImcService {
   }
 
   getImcs(){
-    return this.http.get<ImcHistoric>(this.apiURL+"/imcs",this.httpOptions)
+    return this.http.get<ImcHistoric>(this.apiURL+"/api/imc/",this.httpOptions)
     .pipe(
       retry(1),
       catchError(this.MessageError)
     )
   }
-  getImc(){
-    return this.http.get<ImcApi>(this.apiURL+"/imcs",this.httpOptions)
+  getImc(user_id=1){
+    return this.http.get<ImcApi>(this.apiURL+"/api/imc/"+user_id,this.httpOptions)
     .pipe(
       retry(1),
       catchError(this.MessageError)
     )
   }
   getImcById(id){
-    return this.http.get<ImcApi>(this.apiURL+"/imcs/"+id,this.httpOptions)
+    return this.http.get<ImcApi>(this.apiURL+"/api/imcs/"+id,this.httpOptions)
     .pipe(
       retry(1),
       catchError(this.MessageError)

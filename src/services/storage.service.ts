@@ -10,12 +10,12 @@ export class  StorageService {
     }
 
     setSession(key: string, obj: any) {
-      sessionStorage.setItem(key, JSON.stringify(obj))
+      sessionStorage.setItem(key, obj)
     }
   
     getSession(key: string) {
       const obj = sessionStorage.getItem(key);
-      return obj ? JSON.parse(obj) : null;
+      return obj;
     }
   
     sessionDeleteAll() {
@@ -32,7 +32,7 @@ export class  StorageService {
   
     getLocal(key: string) {
       const obj = localStorage.getItem(key);
-      return obj ? JSON.parse(obj) : null;
+      return obj;
     }
   
     localDeleteAll() {

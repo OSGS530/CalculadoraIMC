@@ -5,6 +5,7 @@ import {getMaleStatus} from '../imcvalor/imc';
 import {getFemaleStatus} from '../imcvalor/imc';
 import { ImcApi } from "../../models/imcapi";
 import { ImcService } from "../../services/imc.service"
+import { DatePipe } from '@angular/common';
 import { StorageService } from "../../services/storage.service";
 
 @Component({
@@ -16,7 +17,7 @@ export class GuiComponent implements OnInit {
   ages = Array.from(Array(10).keys());
 
   status=["Bajo peso","Normal","Sobrepeso","Obesidad"];
-  constructor(private imcService : ImcService, private storageService : StorageService) {}
+  constructor(private imcService : ImcService, private storageService : StorageService,public datepipe: DatePipe) {}
   
   rango:String= "";
   imc = 0;
@@ -62,14 +63,19 @@ export class GuiComponent implements OnInit {
 
   saveimc() {
     var imc = new ImcApi;
+    let fecha=Date();
+    var date = fecha.toString();
     //cambiar usuario activo
     imc.iduser = 1;
     imc.imc = this.imc;
-
+    imc.age = this.edad;
+    imc.date=this.datepipe.transform(fecha,"yyyy-MM-dd");
+    imc.glucosa=0.0;
+    imc.id=0;
+    imc.diabetes=0.0;
   	return this.imcService.createImc(imc)
 		 .subscribe((data: any) => {
 			alert(JSON.stringify(data));
-			
     })
   }
 

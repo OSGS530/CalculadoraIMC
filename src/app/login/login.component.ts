@@ -42,11 +42,9 @@ export class LoginComponent implements OnInit {
 		mydata.password = this.password;
 		   
 		return this.usersService.loginUser(mydata)
-		 .subscribe((data: any) => {
-			
-      this.storageService.setLocal("token", data.accessToken);		
-      //this.storageService.setSession("token", data.accessToken);  
-      this.result = data.accessToken;
+		 .subscribe((data: any) => {	
+      this.storageService.setSession("token", data.accessToken);  
+      console.log(this.storageService.getSession("token"));
       //alert(data.accessToken);
 			// this.router.navigate(['/']);
       this.router.navigate(['/']);

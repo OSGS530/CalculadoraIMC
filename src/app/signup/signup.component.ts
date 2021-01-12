@@ -49,7 +49,12 @@ export class SignupComponent implements OnInit {
       this.storageService.setSession("token", data.accessToken);  
       //alert('ok')
       //alert(data.accessToken);
-      this.router.navigate(['/']);
+      if(data.accessToken){
+        this.router.navigate(['/login']);
+        console.log(data.accessToken);
+      }else{
+        this.router.navigate(['/signup']);
+      }
 		})
   }}
 }

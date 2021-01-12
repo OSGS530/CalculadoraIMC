@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 //import { ResponseApi } from '../models/responseapi';
 import { UserApi } from '../models/usersapi';
-import { UserSignup } from '../models/usersapi';
+//import { UserSignup } from '../models/usersapi';
 import {UsersRegisterApi} from '../models/usersregisterapi';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
 
 export class UsersService {
 
-  apiURL = 'https://garciaso-imc-api.herokuapp.com/'
+  apiURL = 'https://pacific-reaches-70792.herokuapp.com'
   //apiURL = 'http://localhost:8080';
  
  
@@ -30,7 +30,7 @@ export class UsersService {
    httpOptions = {
      headers: new HttpHeaders({
        'Content-Type': 'application/json',
-       'Access-Control-Allow-Origin': '*'
+       'Access-Control-Allow-Origin':'*'
      })
    }  
    // HttpClient API post() method => Create employee
@@ -44,7 +44,7 @@ export class UsersService {
    }
    registerUser(userRegisterApi): Observable<UsersRegisterApi> {
     console.log(JSON.stringify(userRegisterApi));
-    return this.http.post<UsersRegisterApi>(this.apiURL + 'api/auth/signup', JSON.stringify(userRegisterApi), this.httpOptions)
+    return this.http.post<UsersRegisterApi>(this.apiURL + '/api/auth/signup', JSON.stringify(userRegisterApi), this.httpOptions)
     .pipe(
       retry(1),
     )
